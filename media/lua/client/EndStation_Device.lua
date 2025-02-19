@@ -74,12 +74,10 @@ function EndStation.deviceHandler()
     if obj then
         local sfx = EndStation.channelData(obj)
         if sfx then
-            if not obj:getEmitter():isPlaying(tostring(sfx)) then
-                obj:getEmitter():playSound(tostring(sfx))
-            end
+            pl:playSoundLocal(tostring(sfx))
         end
     end
 end
-Events.EveryTenMinutes.Remove(EndStation.deviceHandler)
-Events.EveryTenMinutes.Add(EndStation.deviceHandler)
+Events.EveryHours.Remove(EndStation.deviceHandler)
+Events.EveryHours.Add(EndStation.deviceHandler)
 
