@@ -1,0 +1,30 @@
+
+version=1
+id=
+title=EndStation
+description=Custom Broadcasts for EndStation Pz Server
+description=-----------------------
+description=
+description=B41 MP / SP
+description=can be installed mid save
+description=
+description=
+description=------------------------
+description=
+description=[url=https://steamcommunity.com/id/Glytch3r][img]https://imgur.com/xf9QXFC.gif[/img][/url]
+description=
+description=[quote=author]
+description=Mod by [b]Glytch3r[/b]
+description=Commissioned by [b]DerHauge[/b]
+description=[b]EndStation PZ Server[/b]
+description=[/quote]
+description=
+description=
+description=All my mods are commissioned including this one
+description=For custom pz mod commissions Contact Glytch3r via discord
+description=discord: glytch3r / glytch3r#7331
+description=
+description=[url=https://ko-fi.com/Glytch3r][img]https://storage.ko-fi.com/cdn/brandasset/kofi_button_dark.png[/img][/url]
+description=https://ko-fi.com/glytch3r
+tags=Build 41;Misc;Multiplayer;Pop Culture;Realistic;Silly/Fun
+visibility=public
