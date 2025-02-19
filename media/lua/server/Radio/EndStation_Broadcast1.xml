@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioData>
+  <ScriptEntry ID="MODS-DerHauge" name="EndStationBroadcast" startdelay="0" timestampmode="Static" loopmin="5" loopmax="10">
+    <ExitOptions />
+    <BroadcastEntry ID="b1234567-89ab-4cde-0123-456789abcdef" timestamp="0" endstamp="1440" type="ActivateBroadcast" day="0" advertCat="none" isSegment="true">
+      <LineEntry ID="line1" r="255" g="255" b="255">EndStationBroadcast: Yoh!.</LineEntry>
+      <LineEntry ID="line2" r="255" g="255" b="255">EndStationBroadcast: This mod is commissioned by DerHauge.</LineEntry>
+      <LineEntry ID="line3" r="255" g="255" b="255">EndStationBroadcast: Need a custom mod? contact Glytch3r.</LineEntry>
+      <LineEntry ID="line3" r="255" g="255" b="255">EndStationBroadcast: For any technical concern do not hesitate to dm or ping me.</LineEntry>
+    </BroadcastEntry>
+  </ScriptEntry>
+</RadioData>
