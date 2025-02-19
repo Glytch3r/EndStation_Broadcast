@@ -74,7 +74,10 @@ function EndStation.deviceHandler()
     if obj then
         local sfx = EndStation.channelData(obj)
         if sfx then
-            pl:playSoundLocal(tostring(sfx))
+            --pl:playSoundLocal(tostring(sfx))
+           -- getSoundManager():playUISound(tostring(sfx))
+            getSoundManager():playUISound("GainExperienceLevel")
+
         end
     end
 end
