@@ -76,7 +76,7 @@ function EndStation.deviceHandler()
         if sfx then
             --pl:playSoundLocal(tostring(sfx))
            -- getSoundManager():playUISound(tostring(sfx))
-            getSoundManager():playUISound("GainExperienceLevel")
+            getSoundManager():playUISound(sfx)
 
         end
     end
