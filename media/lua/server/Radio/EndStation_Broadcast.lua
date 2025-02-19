@@ -42,7 +42,7 @@ if DynamicRadio then
 		name = "EndStation2",
 		freq = 120,  -- fixed freq (100.0 MHz)
 		category = "Radio", -- slect from the categories i gave you
-		uuid = "EndStation2",  -- unique identifier you  should not change this and use another one if you have more broadcasts also should start with 4 uppercase letters
+		uuid = "EndS-711984",  -- unique identifier you  should not change this and use another one if you have more broadcasts also should start with 4 uppercase letters
 		register = true, --dont change this
 		airCounterMultiplier = 24 -- dont modify for now, ill let you know what the broadcast multiplier is for loop, you can do experiments as well
 	})

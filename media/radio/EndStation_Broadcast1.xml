@@ -8,7 +8,7 @@
   </RootInfo>
 
   <Channels>
-    <ChannelEntry ID="ff42e077-1f17-4423-9192-afa9cf50f53d" name="EndStation" cat="Radio" freq="100" startscript="main">
+    <ChannelEntry ID="ff42e077-1f17-4423-9192-afa9cf50f53d" name="EndStation" cat="Radio" freq="100000" startscript="main">
       <ScriptEntry ID="5b9c9480-a929-4234-aef9-94ba4572b548" name="EndStation" startdelay="0" timestampmode="Static" loopmin="1" loopmax="1">
         <ExitOptions />
         <BroadcastEntry ID="d2ed9b9b-3467-4c74-a9cf-ab3e74613917" timestamp="0" endstamp="19440" type="ActivateBroadcast" day="0" advertCat="none" isSegment="false">
@@ -21,7 +21,7 @@
   </Channels>
 
     <Channels>
-    <ChannelEntry ID="2ef0e8bd-db92-4021-be0e-0eaf17f21d86" name="EndStation2" cat="Radio" freq="120" startscript="main">
+    <ChannelEntry ID="2ef0e8bd-db92-4021-be0e-0eaf17f21d86" name="EndStation2" cat="Radio" freq="120000" startscript="main">
       <ScriptEntry ID="45324c8f-158f-430b-8994-29b5dd099211" name="EndStation2" startdelay="0" timestampmode="Static" loopmin="1" loopmax="1">
         <ExitOptions />
         <BroadcastEntry ID="a8a9e6d7-c22e-4d2d-8441-a3c3ae4dbf07" timestamp="0" endstamp="19440" type="ActivateBroadcast" day="0" advertCat="none" isSegment="false">
