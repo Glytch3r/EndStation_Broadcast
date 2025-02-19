@@ -83,4 +83,3 @@ function EndStation.deviceHandler()
 end
 Events.EveryHours.Remove(EndStation.deviceHandler)
 Events.EveryHours.Add(EndStation.deviceHandler)
-
