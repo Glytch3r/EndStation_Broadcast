@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioData>
+  <RootInfo>
+    <SourceFile>Radio</SourceFile>
+    <FileGUID>b73aa63e-6286-4c32-9e48-3b0024c22b51</FileGUID>
+    <Version>1</Version>
+  </RootInfo>
+  <Channels>
+    <ChannelEntry ID="18920d08-4330-4a80-b37e-fd541f074adf" name="EndStation" cat="Radio" freq="100000" startscript="main">
+      <ScriptEntry ID="3165921b-d8f5-40c2-829d-5cd78b8c186c" name="EndStation" startdelay="0" timestampmode="Static" loopmin="1" loopmax="1">
+        <ExitOptions />
+        <BroadcastEntry ID="c839fbbf-ef36-4f9e-a9a4-1901908e7fc6" timestamp="0" endstamp="60" type="ActivateBroadcast" day="0" advertCat="none" isSegment="false">
+          <LineEntry ID="38fe5bce-064e-478f-a1e2-a135718f82ec" r="255" g="0" b="0">EndStation: Made by Glytch3r.</LineEntry>
+            <LineEntry ID="45986b46-c9ca-4666-900f-83fffb3c1597" r="255" g="0" b="0">&lt;bzzt&gt;</LineEntry>
+          <LineEntry ID="4fbb39aa-5605-4314-b376-4deaf51b8348" r="255" g="0" b="0">EndStation: Commissioned by DerHauge.</LineEntry>
+          <LineEntry ID="7fbd6cd5-1ccd-452e-b1d2-9e5c32a2a192" r="255" g="0" b="0">EndStation: Contact Glytch3r for custom PZ mod commissions.</LineEntry>
+        </BroadcastEntry>
+      </ScriptEntry>
+    </ChannelEntry>
+      <ChannelEntry ID="91a21a35-1e12-46da-a5ba-2ee863fb88db" name="EndStation2" cat="Amateur" freq="120000" startscript="main">
+      <ScriptEntry ID="465f285d-1a4d-4378-842d-5cdbf345495e" name="EndStation2" startdelay="0" timestampmode="Static" loopmin="1" loopmax="1">
+        <ExitOptions />
+        <BroadcastEntry ID="92ef0c38-b0ef-42a1-9240-6bdb12729047" timestamp="0" endstamp="60" type="ActivateBroadcast" day="0" advertCat="none" isSegment="false">
+          <LineEntry ID="150cec3e-3a26-425d-b462-3e41abbbda43" r="255" g="0" b="0">EndStation2: Made by Glytch3r.</LineEntry>
+        </BroadcastEntry>
+      </ScriptEntry>
+    </ChannelEntry>
+  </Channels>
+</RadioData>

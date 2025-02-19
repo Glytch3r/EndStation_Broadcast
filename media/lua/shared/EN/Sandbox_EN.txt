@@ -1,0 +1,13 @@
+Sandbox_EN = {
+
+	Sandbox_EndStation = "EndStation Broadcasts",
+
+	Sandbox_EndStation_RadioDetectDistance = "RadioDetectDistance",
+	Sandbox_EndStation_RadioDetectDistance_tooltip = "Set low to minimize memory usage",
+
+	Sandbox_EndStation_Sound = "Sound",
+	Sandbox_EndStation_Sound_tooltip = "Sound file to play",
+
+	Sandbox_EndStation_ShouldShowText = "Show Overhead Text",
+
+}

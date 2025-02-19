@@ -1,0 +1,19 @@
+VERSION = 1,
+
+option EndStation.RadioDetectDistance
+{
+	type = double,	 min = 0.00,  max = 60,  default = 15,
+	page = EndStation, translation = EndStation_RadioDetectDistance,
+}
+option EndStation.ShouldShowText
+{
+	type = boolean, default = true,
+	page = EndStation, translation = EndStation_ShouldShowText,
+}
+
+option EndStation.Sound
+{
+	type = string, default = EndStation_Broadcast1,
+	page = EndStation, translation = EndStation_Sound,
+}
+
