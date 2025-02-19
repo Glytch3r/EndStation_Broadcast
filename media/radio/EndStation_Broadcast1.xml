@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RadioData>
-  <ScriptEntry ID="MODS-DerHauge" name="EndStationBroadcast" startdelay="0" timestampmode="Static" loopmin="5" loopmax="10">
-    <ExitOptions />
-    <BroadcastEntry ID="b1234567-89ab-4cde-0123-456789abcdef" timestamp="0" endstamp="1440" type="ActivateBroadcast" day="0" advertCat="none" isSegment="true">
-      <LineEntry ID="line1" r="255" g="255" b="255" codes="MODS_LOOP">EndStationBroadcast: Yoh!.</LineEntry>
-      <LineEntry ID="line2" r="255" g="255" b="255" codes="MODS_LOOP">EndStationBroadcast: This mod is commissioned by DerHauge.</LineEntry>
-      <LineEntry ID="line3" r="255" g="255" b="255" codes="MODS_LOOP">EndStationBroadcast: Need a custom mod? contact Glytch3r.</LineEntry>
-      <LineEntry ID="line4" r="255" g="255" b="255" codes="MODS_LOOP">EndStationBroadcast: For any technical concern do not hesitate to dm or ping me.</LineEntry>
-    </BroadcastEntry>
-  </ScriptEntry>
+
+  <RootInfo>
+    <SourceFile>Radio</SourceFile>
+    <FileGUID>d849afb5-a168-4bf1-a53c-119f2f8eae52</FileGUID>
+    <Version>1</Version>
+  </RootInfo>
+
+  <Channels>
+    <ChannelEntry ID="ff42e077-1f17-4423-9192-afa9cf50f53d" name="EndStation" cat="Radio" freq="100" startscript="main">
+      <ScriptEntry ID="5b9c9480-a929-4234-aef9-94ba4572b548" name="EndStation" startdelay="0" timestampmode="Static" loopmin="1" loopmax="1">
+        <ExitOptions />
+        <BroadcastEntry ID="d2ed9b9b-3467-4c74-a9cf-ab3e74613917" timestamp="0" endstamp="19440" type="ActivateBroadcast" day="0" advertCat="none" isSegment="false">
+          <LineEntry ID="f701617c-9fcc-47e8-8115-9b17cc6448ee" r="255" g="0" b="0" >EndStation: Made by Glytch3r.</LineEntry>
+          <LineEntry ID="f0ea364b-26b6-4c2f-ae9f-65aadb471f5a" r="255" g="0" b="0" >EndStation: Commissioned by DerHauge.</LineEntry>
+          <LineEntry ID="7638d06f-d1ff-41c8-866d-698ad1d5fb35" r="255" g="0" b="0" >EndStation: Contact Glytch3r for custom PZ mod commissions.</LineEntry>
+        </BroadcastEntry>
+      </ScriptEntry>
+    </ChannelEntry>
+  </Channels>
+
+    <Channels>
+    <ChannelEntry ID="2ef0e8bd-db92-4021-be0e-0eaf17f21d86" name="EndStation2" cat="Radio" freq="120" startscript="main">
+      <ScriptEntry ID="45324c8f-158f-430b-8994-29b5dd099211" name="EndStation2" startdelay="0" timestampmode="Static" loopmin="1" loopmax="1">
+        <ExitOptions />
+        <BroadcastEntry ID="a8a9e6d7-c22e-4d2d-8441-a3c3ae4dbf07" timestamp="0" endstamp="19440" type="ActivateBroadcast" day="0" advertCat="none" isSegment="false">
+          <LineEntry ID="38fe5bce-064e-478f-a1e2-a135718f82ec" r="255" g="0" b="0">EndStation: Made by Glytch3r.</LineEntry>
+          <LineEntry ID="4fbb39aa-5605-4314-b376-4deaf51b8348" r="255" g="0" b="0">EndStation: Commissioned by DerHauge.</LineEntry>
+          <LineEntry ID="7fbd6cd5-1ccd-452e-b1d2-9e5c32a2a192" r="255" g="0" b="0">EndStation: Contact Glytch3r for custom PZ mod commissions.</LineEntry>
+        </BroadcastEntry>
+      </ScriptEntry>
+    </ChannelEntry>
+  </Channels>
+
 </RadioData>

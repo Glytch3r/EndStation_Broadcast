@@ -26,33 +26,28 @@
 -- Bandit    Could be used for hostile survivor groups' transmissions.
 -- Emergency    Official emergency broadcast channels (e.g., AEBS).
 -- Other    General purpose, used when a category doesn't fit any of the above.
+-- ActivateBroadcast
 
 if DynamicRadio then
 	table.insert(DynamicRadio.channels, {
-		name = "EndStation Broadcast",
+		name = "EndStation",
 		freq = 100000,  -- fixed freq (100.0 MHz)
 		category = "Radio", -- slect from the categories i gave you
-		uuid = "MODS-DerHauge",  -- unique identifier you  should not change this and use another one if you have more broadcasts also should start with 4 uppercase letters
+		uuid = "ff42e077-1f17-4423-9192-afa9cf50f53d",  -- unique identifier you  should not change this and use another one if you have more broadcasts also should start with 4 uppercase letters
+		register = true, --dont change this
+		airCounterMultiplier = 24 -- dont modify for now, ill let you know what the broadcast multiplier is for loop, you can do experiments as well
+	})
+
+    table.insert(DynamicRadio.channels, {
+		name = "EndStation2",
+		freq = 120,  -- fixed freq (100.0 MHz)
+		category = "Radio", -- slect from the categories i gave you
+		uuid = "EndStation2",  -- unique identifier you  should not change this and use another one if you have more broadcasts also should start with 4 uppercase letters
 		register = true, --dont change this
 		airCounterMultiplier = 24 -- dont modify for now, ill let you know what the broadcast multiplier is for loop, you can do experiments as well
 	})
 end
 
-
-
-local function OnDeviceText(guid, codes, x, y, z, text, device)
-    if guid == "MODS-DerHauge" and codes == "MODS_LOOP" then
-        if (getCore():getDebug() and isAdmin()) then
-            print("[EndStation] Broadcast Message: " .. text)
-        end
-        local player = getPlayer()
-        if player and player:getSquare():DistTo(x, y) < 30 then
-            getSoundManager():PlayWorldSound("EndStationRadio", player:getSquare(), 0, 20, 1, false)
-        end
-    end
-end
-
-Events.OnDeviceText.Add(OnDeviceText)
 
 --[[_____________________________________________________________________________________________________________________________
    ░▒▓██████▓▒░    ░▒▓████████▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓██████▓▒░   ░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓███████▓▒░    ░▒▓█▓▒░  ░▒█▒░
