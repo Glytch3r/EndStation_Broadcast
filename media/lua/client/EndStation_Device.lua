@@ -23,7 +23,7 @@ function EndStation.getEndStationRadioInRange()
                                 local msg = "EndStation: "..tostring(radio:getDeviceName()).." "..tostring(radio:getChannel())
                                 print(tostring(msg))
                                 --pl:Say(msg, 1.0, 1.0, 1.0, UIFont.Dialogue, 30, "radio")
-                                obj:addLineChatElement(tostring(msg))
+                                pl:addLineChatElement(tostring(msg))
                             end
 
                             return obj
@@ -66,10 +66,6 @@ function EndStation.deviceHandler()
         local sfx = EndStation.getSound()
         if not obj:getEmitter():isPlaying(sfx) then
             obj:getEmitter():playSound(tostring(sfx))
-            if EndStation.dbg then
-                print("EndStation")
-                pl:addLineChatElement('EndStation')
-            end
         end
     end
 end
