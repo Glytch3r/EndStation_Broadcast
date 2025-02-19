@@ -6,7 +6,11 @@
     <Version>1</Version>
   </RootInfo>
   <Channels>
-    <ChannelEntry ID="18920d08-4330-4a80-b37e-fd541f074adf" name="EndStation" cat="Radio" freq="100000" startscript="main">
+
+
+ <!--  copy from here -->
+
+    <ChannelEntry ID="ff42e077-1f17-4423-9192-afa9cf50f53d" name="EndStation" cat="Radio" freq="120000" startscript="main">
       <ScriptEntry ID="3165921b-d8f5-40c2-829d-5cd78b8c186c" name="EndStation" startdelay="0" timestampmode="Static" loopmin="1" loopmax="1">
         <ExitOptions />
         <BroadcastEntry ID="c839fbbf-ef36-4f9e-a9a4-1901908e7fc6" timestamp="0" endstamp="60" type="ActivateBroadcast" day="0" advertCat="none" isSegment="false">
@@ -17,13 +21,10 @@
         </BroadcastEntry>
       </ScriptEntry>
     </ChannelEntry>
-      <ChannelEntry ID="91a21a35-1e12-46da-a5ba-2ee863fb88db" name="EndStation2" cat="Amateur" freq="120000" startscript="main">
-      <ScriptEntry ID="465f285d-1a4d-4378-842d-5cdbf345495e" name="EndStation2" startdelay="0" timestampmode="Static" loopmin="1" loopmax="1">
-        <ExitOptions />
-        <BroadcastEntry ID="92ef0c38-b0ef-42a1-9240-6bdb12729047" timestamp="0" endstamp="60" type="ActivateBroadcast" day="0" advertCat="none" isSegment="false">
-          <LineEntry ID="150cec3e-3a26-425d-b462-3e41abbbda43" r="255" g="0" b="0">EndStation2: Made by Glytch3r.</LineEntry>
-        </BroadcastEntry>
-      </ScriptEntry>
-    </ChannelEntry>
+
+  <!--  to  here -->
+
+
+
   </Channels>
 </RadioData>

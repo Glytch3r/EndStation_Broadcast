@@ -13,13 +13,12 @@ function EndStation.getEndStationRadioInRange()
             local sq = cell:getOrCreateGridSquare(x + xDelta, y + yDelta, z)
             for i=0, sq:getObjects():size()-1 do
                 local obj = sq:getObjects():get(i)
-                if instanceof(obj, "IsoRadio") then
+                if obj and instanceof(obj, "IsoRadio") then
                     if EndStation.isValid(obj) then
                         local radio = obj:getDeviceData()
-                        if radio then
-
+                        if radio and EndStation.isWithinRange(x, y, z, obj) then
                             local bool = SandboxVars.EndStation.ShouldShowText or true
-                            if bool or  EndStation.dbg  then
+                            if bool or EndStation.dbg  then
                                 local msg = "EndStation: "..tostring(radio:getDeviceName()).." "..tostring(radio:getChannel())
                                 print(tostring(msg))
                                 --pl:Say(msg, 1.0, 1.0, 1.0, UIFont.Dialogue, 30, "radio")
@@ -42,15 +41,25 @@ function EndStation.isWithinRange(px, py, pz, obj)
     return (px - dx)^2 + (py - dy)^2 <= range^2 and pz == dz
 end
 
+function EndStation.channelData(obj)
+    local radio = obj:getDeviceData()
+    if not radio then return nil end
+    local key = radio:getChannel()
+    local tab = {
+        --[freq] = "sound file"
+        --[100000] = "EndStation_Broadcast",
+        [120000] = "EndStation_Broadcast1",
+    }
+    return tab[key]
+end
+
+
 
 function EndStation.isValid(obj)
     if not (obj or instanceof(obj, "IsoRadio")) then return end
     local radio = obj:getDeviceData()
     if radio then
-        local pl = getPlayer()
-        if EndStation.isWithinRange(round(pl:getX()),  round(pl:getY()),  pl:getZ(), obj) then
-            return radio:getIsTurnedOn() and radio:getChannel() == 100000
-        end
+        return radio:getIsTurnedOn()
     end
     return false
 end
@@ -63,9 +72,11 @@ function EndStation.deviceHandler()
     local pl = getPlayer()
     local obj = EndStation.getEndStationRadioInRange()
     if obj then
-        local sfx = EndStation.getSound()
-        if not obj:getEmitter():isPlaying(sfx) then
-            obj:getEmitter():playSound(tostring(sfx))
+        local sfx = EndStation.channelData(obj)
+        if sfx then
+            if not obj:getEmitter():isPlaying(tostring(sfx)) then
+                obj:getEmitter():playSound(tostring(sfx))
+            end
         end
     end
 end
