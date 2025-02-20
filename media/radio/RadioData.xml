@@ -10,7 +10,7 @@
 
  <!--  copy from here -->
 
-    <ChannelEntry ID="ff42e077-1f17-4423-9192-afa9cf50f53d" name="EndStation" cat="Radio" freq="120000" startscript="main"> <!-- FREQ* -->
+    <ChannelEntry ID="ff42e077-1f17-4423-9192-afa9cf50f53d" name="EndStation" cat="Radio" freq="100000" startscript="main"> <!-- FREQ* -->
       <ScriptEntry ID="3165921b-d8f5-40c2-829d-5cd78b8c186c" name="EndStation" startdelay="0" timestampmode="Static" loopmin="1" loopmax="1">
         <ExitOptions />
         <BroadcastEntry ID="c839fbbf-ef36-4f9e-a9a4-1901908e7fc6" timestamp="0" endstamp="60" type="ActivateBroadcast" day="0" advertCat="none" isSegment="false">

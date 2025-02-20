@@ -10,4 +10,7 @@ Sandbox_EN = {
 
 	Sandbox_EndStation_ShouldShowText = "Show Overhead Text",
 
+	Sandbox_EndStation_TriggerPerMin = "Trigger Every One Minute",
+	Sandbox_EndStation_TriggerPerMin_tooltip = "Switch trigger to per minute instead of per hour",
+
 }

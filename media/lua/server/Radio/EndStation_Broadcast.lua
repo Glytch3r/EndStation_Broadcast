@@ -31,7 +31,7 @@
 if DynamicRadio then
 	table.insert(DynamicRadio.channels, {
 		name = "EndStation",
-		freq = 120000,  -- fixed freq (120.0 MHz)  -- FREQ*
+		freq = 100000,  -- fixed freq (100.0 MHz)  -- FREQ*
 		category = "Radio", -- slect from the categories i gave you
 		uuid = "ff42e077-1f17-4423-9192-afa9cf50f53d",  -- unique identifier you  should not change this and use another one if you have more broadcasts also should start with 4 uppercase letters
 		register = true, --dont change this
@@ -60,5 +60,4 @@ end
   ░▒▓█▓▒░░▒▓█▓▒░   ░▒▓█▓▒░        ░▒▓█▓▒░░▒▓█▓▒░     ░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓█▓▒░  ▒▓░    ░▒▓█▓▒░   ░▒▓█▒░  ░▒▓█▒░
    ░▒▓█████▓▒░     ░▒▓█▓▒░        ░▒▓█▓▒░░▒▓█▓▒░  ░▒▓███████▓▒░   ░▒▓██████▓▒░   ░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓███████▓▒░    ░▒▓███████▓▒░
 █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████--]]
-
 

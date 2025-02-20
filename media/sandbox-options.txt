@@ -17,3 +17,8 @@ option EndStation.Sound
 	page = EndStation, translation = EndStation_Sound,
 }
 
+option EndStation.TriggerPerMin
+{
+	type = boolean, default = false,
+	page = EndStation, translation = EndStation_TriggerPerMin,
+}
