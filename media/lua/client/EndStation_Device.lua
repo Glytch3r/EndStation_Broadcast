@@ -41,6 +41,9 @@ function EndStation.isWithinRange(px, py, pz, obj)
     return (px - dx)^2 + (py - dy)^2 <= range^2 and pz == dz
 end
 
+
+
+
 function EndStation.channelData(obj)
     local radio = obj:getDeviceData()
     if not radio then return nil end
@@ -48,7 +51,8 @@ function EndStation.channelData(obj)
     local tab = {
         --[freq] = "sound file"
         --[100000] = "EndStation_Broadcast",
-        [120000] = "EndStation_Broadcast1",
+        [120000] = "EndStation_Broadcast1",  --- FREQ*
+
     }
     return tab[key]
 end

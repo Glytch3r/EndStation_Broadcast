@@ -1,13 +1,17 @@
 module Base {
 
 	imports { Base }
-	sound EndStation_Broadcast1 { 
-		category = Radio, 
-		clip { 
-			file = media/sound/EndStation_Broadcast1.ogg, 
-			is3D = true, 
+
+	/* -----------copy------------ */
+	sound EndStation_Broadcast1 {
+		category = Radio,
+		clip {
+			file = media/sound/EndStation_Broadcast1.ogg,
+			is3D = true,
 			volume = 1.0,
-		} 
+		}
 	}
-	
+	/* ------------------------ */
+
+
 }
