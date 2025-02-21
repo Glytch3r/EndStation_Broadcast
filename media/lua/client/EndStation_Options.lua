@@ -46,7 +46,6 @@ end
 function EndStation.triggerHandler()
     if EndStation.isSandboxChanged() then
         EndStation.saveSandbox()
-        EndStation.clearTriggers()
         EndStation.retrigger(tostring(SandboxVars.EndStation.TriggerModes))
     end
 end
@@ -64,6 +63,7 @@ function EndStation.isSandboxChanged()
     end
 end
 function EndStation.retrigger(mode)
+      EndStation.clearTriggers()
     if mode == "1" then
         Events.EveryOneMinute.Add(EndStation.deviceHandler)
     elseif EndStation.is10MinTrigger(mode) then
