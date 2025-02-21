@@ -19,8 +19,7 @@ option EndStation.Sound
 
 option EndStation.TriggerModes
 {
-    type = enum, numValues = 5,    default = ,
+    type = enum, numValues = 5,    default = 4,
     page = EndStation, translation = EndStation_TriggerModes,
     valueTranslation = EndStation_TriggerModes,
 }
------------------------               ---------------------------
