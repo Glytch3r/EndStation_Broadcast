@@ -36,6 +36,7 @@ function EndStation.getPlayerRadio(pl)
     end
     return nil
 end
+
 function EndStation.getSound()
     return SandboxVars.EndStation.Sound  or "EndStation_Broadcast1"
 end

@@ -17,4 +17,8 @@ Sandbox_EN = {
 	Sandbox_EndStation_TriggerModes_option4 = "Every 1 Hour",
 	Sandbox_EndStation_TriggerModes_option5 = "Once A Day",
 
+	Sandbox_EndStation_ShouldPlaySFX = "Play SFX",
+	Sandbox_EndStation_ShouldPlaySFX_tooltip = "A way to disable the audio incase something goes wrong",
+
+
 }
