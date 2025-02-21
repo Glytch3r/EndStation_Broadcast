@@ -18,107 +18,134 @@
 |_______________________________________________________________________________________________________________________________-]]
 
 EndStation = EndStation or {}
-EndStation.dbg = false
 
-function EndStation.getCar()
-    local pl = getPlayer()
-    return pl:getVehicle() or pl:getNearVehicle() or pl:getUseableVehicle()
+EndStation.currentTriggerMode = SandboxVars.EndStation.TriggerModes or 4
+
+function EndStation.getSound()
+    return SandboxVars.EndStation.Sound or "EndStation_Broadcast1"
 end
 
-function EndStation.getPlayerRadio(pl)
-    pl = pl or getPlayer()
-    local inv = pl:getInventory()
-    for i = 0, inv:getItems():size() - 1 do
-        local item = inv:getItems():get(i)
-        if item and EndStation.isValid(item) then
-            return item
-        end
+-----------------------            ---------------------------
+function EndStation.saveSandbox()
+    local sOpt = getSandboxOptions()
+    local opt1 = SandboxVars.EndStation.RadioDetectDistance
+    local opt2 = SandboxVars.EndStation.Sound
+    local opt3 = SandboxVars.EndStation.ShouldShowText
+    local opt4 = SandboxVars.EndStation.TriggerModes
+
+    sOpt:getOptionByName("EndStation.RadioDetectDistance"):setValue(tostring(opt1))
+    sOpt:getOptionByName("EndStation.Sound"):setValue(tostring(opt2))
+    sOpt:getOptionByName("EndStation.ShouldShowText"):setValue(tostring(opt3))
+    sOpt:getOptionByName("EndStation.TriggerModes"):setValue(tostring(opt4))
+    sOpt:toLua()
+    sOpt:sendToServer()
+    print("EndStation SandboxVars Synced")
+end
+-----------------------            ---------------------------
+
+function EndStation.triggerHandler()
+    if EndStation.isSandboxChanged() then
+        EndStation.saveSandbox()
+        EndStation.clearTriggers()
+        EndStation.retrigger(tostring(SandboxVars.EndStation.TriggerModes))
     end
-    return nil
 end
+Events.EveryOneMinute.Add(EndStation.triggerHandler)
 
 
-function EndStation.getTurnedOnVehicleRadio()
-    local car = EndStation.getCar()
-    if car then
-        for partIndex=1, car:getPartCount() do
-            local part = car:getPartByIndex(partIndex-1)
-            local radio = part:getDeviceData()
-            if radio and radio:getIsTurnedOn() then
-                return part
-            end
-        end
+
+function EndStation.isSandboxChanged()
+    local newMode = tostring(SandboxVars.EndStation.TriggerModes)
+    local curMode = tostring(EndStation.currentTriggerMode)
+    if newMode ~= curMode then
+        EndStation.currentTriggerMode = newMode
+        getPlayer():addLineChatElement('EndStation: sandbox updated')
+        return true
     end
-    return nil
 end
-
---[[
-
-function EndStation.getNearbyPlayerRadio(pl)
-    pl = pl or getPlayer()
-    local players = getOnlinePlayers()
-    if not players then return nil end
-
-    for i = 0, players:size() - 1 do
-        local otherPl = players:get(i)
-        if otherPl ~= pl then
-            local radio = EndStation.getTurnedOnInventoryRadio(otherPl) or EndStation.getTurnedOnVehicleRadio(otherPl)
-            if radio then
-                return radio
-            end
-        end
+function EndStation.retrigger(mode)
+    if mode == "1" then
+        Events.EveryOneMinute.Add(EndStation.deviceHandler)
+    elseif EndStation.is10MinTrigger(mode) then
+        Events.EveryTenMinutes.Add(EndStation.deviceHandler)
+    elseif mode == "4" then
+        Events.EveryHours.Add(EndStation.deviceHandler)
+    elseif mode == "5" then
+        Events.EveryDays.Add(EndStation.deviceHandler)
     end
-    return nil
-end ]]
-
-function EndStation.getEndStationRadioInRange(pl)
-    pl = pl or getPlayer()
-    local rad = SandboxVars.EndStation.RadioDetectDistance or 15
-    local cell = pl:getCell()
-    local x, y, z = pl:getX(), pl:getY(), pl:getZ()
-
-    for xDelta = -rad, rad do
-        for yDelta = -rad, rad do
-            local sq = cell:getOrCreateGridSquare(x + xDelta, y + yDelta, z)
-            for i = 0, sq:getObjects():size() - 1 do
-                local obj = sq:getObjects():get(i)
-                if obj and EndStation.isValid(obj) then
-                    local radio = obj:getDeviceData()
-                    if radio and EndStation.isWithinRange(x, y, z, obj) then
-                        return obj
-                    end
-                end
-            end
-        end
-    end
-    return nil
 end
 
-function EndStation.isValid(obj)
-    if not obj then return false end
-    if instanceof(obj, "IsoRadio") or instanceof(obj, "Radio") or instanceof(obj, "IsoWaveSignal") then
-        local radio = obj:getDeviceData()
-        return radio and radio:getIsTurnedOn()
-    end
-    return false
+function EndStation.clearTriggers()
+    if getCore():getDebug() or EndStation.dbg then
+        print("EndStation: Triggers Cleared")
+	end
+    Events.EveryOneMinute.Remove(EndStation.deviceHandler)
+    Events.EveryTenMinutes.Remove(EndStation.deviceHandler)
+    --Events.EveryTenMinutes.Remove(EndStation.deviceHandler)
+    Events.EveryHours.Remove(EndStation.deviceHandler)
+    Events.EveryDays.Remove(EndStation.deviceHandler)
 end
 
-function EndStation.isWithinRange(px, py, pz, obj)
-    local dx, dy, dz = obj:getX(), obj:getY(), obj:getZ()
-    local range = obj:getDeviceData():getTransmitRange()
-    return (px - dx)^2 + (py - dy)^2 <= range^2 and pz == dz
-end
+function EndStation.is10MinTrigger(mode)
+    local TriggerModesTable = {
+        ['1'] = false,
 
-function EndStation.channelData(obj)
-    local radio = obj:getDeviceData()
-    if not radio then return nil end
-    local key = radio:getChannel()
-    local tab = {
-        [100000] = tostring(EndStation.getSound()) or "EndStation_Broadcast1", --FREQ*
-        --[120000] = "EndStation_Broadcast2",
+        ['2'] = true,
+        ['3'] = true,
+
+        ['4'] = false,
+        ['5'] = false,
     }
-    return tab[key]
+
+    return TriggerModesTable[mode]
 end
+
+
+function EndStation.IsThirtyMinutesPast()
+    return getGameTime():getMinutes() == 30
+end
+
+
+function EndStation.deviceHandler()
+    local bool = true
+    local mode = tostring(SandboxVars.EndStation.TriggerModes)
+    if EndStation.is10MinTrigger(mode) and mode  == "3" then
+        if not EndStation.IsThirtyMinutesPast() then
+            bool = false
+        end
+    end
+    if bool then
+        local pl = getPlayer()
+        local part = EndStation.getTurnedOnVehicleRadio()
+        local item = EndStation.getPlayerRadio()
+        local obj = EndStation.getEndStationRadioInRange() or item or part
+
+        if obj then
+            if SandboxVars.EndStation.ShouldShowText or EndStation.dbg then
+                local msg = "EndStation: " .. tostring(obj:getDeviceData():getDeviceName()) .. " " .. tostring(obj:getDeviceData():getChannel())
+                print(msg)
+                pl:addLineChatElement(msg)
+            end
+
+            local sfx = EndStation.channelData(obj)
+            if sfx then
+                getSoundManager():playUISound(sfx)
+            end
+        end
+    end
+end
+
+-----------------------            ---------------------------
+local hook = ISServerSandboxOptionsUI.onButtonApply
+function ISServerSandboxOptionsUI:onButtonApply()
+    EndStation.saveSandbox()
+    EndStation.retrigger(tostring(SandboxVars.EndStation.TriggerModes)) -- Pass the mode
+   	if isAdmin() or  EndStation.dbg then
+        print('EndStation: sandbox updated')
+	end
+    hook(self)
+end
+
 
 --[[_____________________________________________________________________________________________________________________________
    ░▒▓██████▓▒░    ░▒▓████████▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓██████▓▒░   ░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓███████▓▒░    ░▒▓█▓▒░  ░▒█▒░

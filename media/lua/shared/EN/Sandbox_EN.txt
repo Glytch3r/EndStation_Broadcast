@@ -5,12 +5,16 @@ Sandbox_EN = {
 	Sandbox_EndStation_RadioDetectDistance = "RadioDetectDistance",
 	Sandbox_EndStation_RadioDetectDistance_tooltip = "Set low to minimize memory usage",
 
-	Sandbox_EndStation_Sound = "Sound",
-	Sandbox_EndStation_Sound_tooltip = "Sound file to play",
+	Sandbox_EndStation_Sound = "Frequency 100 Sound File",
+	Sandbox_EndStation_Sound_tooltip = "Make sure the script and audio files exist before changing this",
 
 	Sandbox_EndStation_ShouldShowText = "Show Overhead Text",
 
-	Sandbox_EndStation_TriggerPerMin = "Trigger Every One Minute",
-	Sandbox_EndStation_TriggerPerMin_tooltip = "Switch trigger to per minute instead of per hour",
+	Sandbox_EndStation_TriggerModes = "EndStation Mode Values",
+	Sandbox_EndStation_TriggerModes_option1 = "Every 1 Minute",
+	Sandbox_EndStation_TriggerModes_option2 = "Every 10 Minutes",
+	Sandbox_EndStation_TriggerModes_option3 = "Every 30 Minutes",
+	Sandbox_EndStation_TriggerModes_option4 = "Every 1 Hour",
+	Sandbox_EndStation_TriggerModes_option5 = "Once A Day",
 
 }

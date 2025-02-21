@@ -17,8 +17,10 @@ option EndStation.Sound
 	page = EndStation, translation = EndStation_Sound,
 }
 
-option EndStation.TriggerPerMin
+option EndStation.TriggerModes
 {
-	type = boolean, default = false,
-	page = EndStation, translation = EndStation_TriggerPerMin,
+    type = enum, numValues = 5,    default = ,
+    page = EndStation, translation = EndStation_TriggerModes,
+    valueTranslation = EndStation_TriggerModes,
 }
+-----------------------               ---------------------------
