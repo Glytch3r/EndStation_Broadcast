@@ -19,7 +19,19 @@
 
 EndStation = EndStation or {}
 
-EndStation.currentTriggerMode = SandboxVars.EndStation.TriggerModes or 4
+local mode = SandboxVars.EndStation.TriggerModes or 4
+EndStation.currentTriggerMode = mode
+
+if mode == "1" then
+    Events.EveryOneMinute.Add(EndStation.deviceHandler)
+elseif EndStation.is10MinTrigger(mode) then
+    Events.EveryTenMinutes.Add(EndStation.deviceHandler)
+elseif mode == "4" then
+    Events.EveryHours.Add(EndStation.deviceHandler)
+elseif mode == "5" then
+    Events.EveryDays.Add(EndStation.deviceHandler)
+end
+
 
 function EndStation.getSound()
     return SandboxVars.EndStation.Sound or "EndStation_Broadcast1"
@@ -139,7 +151,7 @@ end
 local hook = ISServerSandboxOptionsUI.onButtonApply
 function ISServerSandboxOptionsUI:onButtonApply()
     EndStation.saveSandbox()
-    EndStation.retrigger(tostring(SandboxVars.EndStation.TriggerModes)) -- Pass the mode
+    EndStation.retrigger(tostring(SandboxVars.EndStation.TriggerModes))
    	if isAdmin() or  EndStation.dbg then
         print('EndStation: sandbox updated')
 	end
