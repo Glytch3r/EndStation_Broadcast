@@ -36,11 +36,14 @@ function EndStation.updateTriggers()
     end
 end
 function EndStation.saveSandbox()
+    if EndStation.currentEvent then
+        EndStation.currentEvent.event.Remove(EndStation.preDeviceHandler)
+    end
     local sOpt = getSandboxOptions()
-    sOpt:getOptionByName("EndStation.RadioDetectDistance"):setValue(tostring(SandboxVars.EndStation.RadioDetectDistance))
-    sOpt:getOptionByName("EndStation.Sound"):setValue(tostring(SandboxVars.EndStation.Sound))
-    sOpt:getOptionByName("EndStation.ShouldShowText"):setValue(tostring(SandboxVars.EndStation.ShouldShowText))
-    sOpt:getOptionByName("EndStation.TriggerModes"):setValue(tostring(SandboxVars.EndStation.TriggerModes))
+    sOpt:getOptionByName("EndStation.RadioDetectDistance"):setValue(SandboxVars.EndStation.RadioDetectDistance)
+    sOpt:getOptionByName("EndStation.Sound"):setValue(SandboxVars.EndStation.Sound)
+    sOpt:getOptionByName("EndStation.ShouldShowText"):setValue(SandboxVars.EndStation.ShouldShowText)
+    sOpt:getOptionByName("EndStation.TriggerModes"):setValue(SandboxVars.EndStation.TriggerModes)
 
 
     sOpt:toLua()
