@@ -23,3 +23,9 @@ option EndStation.TriggerModes
     page = EndStation, translation = EndStation_TriggerModes,
     valueTranslation = EndStation_TriggerModes,
 }
+
+option EndStation.ShouldPlaySFX
+{
+	type = boolean, default = true,
+	page = EndStation, translation = EndStation_ShouldPlaySFX,
+}
