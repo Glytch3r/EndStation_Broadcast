@@ -1,49 +1,33 @@
-
---[[██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-   ░▒▓█████▓▒░     ░▒▓█▓▒░        ░▒▓█▓▒░░▒▓█▓▒░  ░▒▓███████▓▒░   ░▒▓██████▓▒░   ░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓███████▓▒░    ░▒▓███████▓▒░
-  ░▒▓█▓▒░░▒▓█▓▒░   ░▒▓█▓▒░        ░▒▓█▓▒░░▒▓█▓▒░     ░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓█▓▒░  ▒▓░    ░▒▓█▓▒░   ░▒▓█▒░  ░▒▓█▒░
-  ░▒▓█▓▒░          ░▒▓█▓▒░        ░▒▓█▓▒░░▒▓█▓▒░     ░▒▓█▓▒░     ░▒▓█▓▒░         ░▒▓█▓▒░ ░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▒░  ░▒▓█▒░
-  ░▒▓█▓▒▒▓███▓▒░   ░▒▓█▓▒░         ░▒▓██████▓▒░      ░▒▓█▓▒░     ░▒▓█▓▒░         ░▒▓█████████▓▒░     ░▒▓███▓▒░     ░▒▓███████▓▒░
-  ░▒▓█▓▒░░▒▓█▓▒░   ░▒▓█▓▒░           ░▒▓█▓▒░         ░▒▓█▓▒░     ░▒▓█▓▒░         ░▒▓█▓▒░ ░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▓▒░  ░▒▓▒░
-  ░▒▓█▓▒░░▒▓█▓▒░   ░▒▓█▓▒░           ░▒▓█▓▒░         ░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓█▓▒░  ▒▓░    ░▒▓█▓▒░   ░▒▓█▓▒░  ░▒█▒░
-   ░▒▓██████▓▒░    ░▒▓████████▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓██████▓▒░   ░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓███████▓▒░    ░▒▓█▓▒░  ░▒█▒░
-|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
-|                        				 Custom  PZ  Mod  Developer  for  Hire													  |
-|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
-|                       	Portfolio:  https://steamcommunity.com/id/glytch3r/myworkshopfiles/							          |
-|                       		                                    														 	  |
-|                       	Discord:    Glytch3r#1337 / glytch3r															      |
-|                       		                                    														 	  |
-|                       	Support:    https://ko-fi.com/glytch3r														    	  |
-|_______________________________________________________________________________________________________________________________-]]
 EndStation = EndStation or {}
 
-local mode = SandboxVars.EndStation.TriggerModes or 4
-EndStation.currentTriggerMode = mode
-EndStation.shouldSync = false
+EndStation.currentTriggerMode = SandboxVars.EndStation.TriggerModes or 4
 
 EndStation.TriggerEvents = {
-    ['1'] = { event = Events.EveryOneMinute, condition = function() return SandboxVars.EndStation.TriggerModes == 1 end },
-    ['2'] = { event = Events.EveryTenMinutes, condition = function() return SandboxVars.EndStation.TriggerModes == 2 end },
-    ['3'] = { event = Events.EveryTenMinutes, condition = function() return SandboxVars.EndStation.TriggerModes == 3 and EndStation.IsThirtyMinutesPast() end },
-    ['4'] = { event = Events.EveryHours, condition = function() return SandboxVars.EndStation.TriggerModes == 4 end },
-    ['5'] = { event = Events.EveryDays, condition = function() return SandboxVars.EndStation.TriggerModes == 5 end }
+    ['1'] = { event = Events.EveryOneMinute },
+    ['2'] = { event = Events.EveryTenMinutes },
+    ['3'] = { event = Events.EveryTenMinutes },
+    ['4'] = { event = Events.EveryHours },
+    ['5'] = { event = Events.EveryDays }
 }
 
 EndStation.currentEvent = nil
 
 function EndStation.preDeviceHandler()
-    if EndStation.TriggerEvents[tostring(SandboxVars.EndStation.TriggerModes)] and EndStation.TriggerEvents[tostring(SandboxVars.EndStation.TriggerModes)].condition() then
-        EndStation.deviceHandler()
+    local mode = tostring(SandboxVars.EndStation.TriggerModes)
+    if mode == "3" and not EndStation.IsThirtyMinutesPast() then
+        return
     end
+    EndStation.deviceHandler()
 end
 
-function EndStation.retrigger(mode)
+function EndStation.updateTriggers()
     if EndStation.currentEvent then
         EndStation.currentEvent.event.Remove(EndStation.preDeviceHandler)
     end
 
-    local trigger = EndStation.TriggerEvents[tostring(mode)]
+    local mode = tostring(SandboxVars.EndStation.TriggerModes)
+    local trigger = EndStation.TriggerEvents[mode]
+
     if trigger then
         trigger.event.Add(EndStation.preDeviceHandler)
         EndStation.currentEvent = trigger
@@ -51,49 +35,28 @@ function EndStation.retrigger(mode)
         EndStation.currentEvent = nil
     end
 end
-
 function EndStation.saveSandbox()
     local sOpt = getSandboxOptions()
-    local options = {
-        RadioDetectDistance = SandboxVars.EndStation.RadioDetectDistance,
-        Sound = SandboxVars.EndStation.Sound,
-        ShouldShowText = SandboxVars.EndStation.ShouldShowText,
-        TriggerModes = SandboxVars.EndStation.TriggerModes
-    }
+    sOpt:getOptionByName("EndStation.RadioDetectDistance"):setValue(tostring(SandboxVars.EndStation.RadioDetectDistance))
+    sOpt:getOptionByName("EndStation.Sound"):setValue(tostring(SandboxVars.EndStation.Sound))
+    sOpt:getOptionByName("EndStation.ShouldShowText"):setValue(tostring(SandboxVars.EndStation.ShouldShowText))
+    sOpt:getOptionByName("EndStation.TriggerModes"):setValue(tostring(SandboxVars.EndStation.TriggerModes))
 
-    for key, value in pairs(options) do
-        sOpt:getOptionByName("EndStation." .. key):setValue(tostring(value))
-    end
 
     sOpt:toLua()
     sOpt:sendToServer()
-    print("EndStation SandboxVars Synced")
+    print("EndStation: SandboxVars Synced")
 
-    EndStation.shouldSync = false
-    EndStation.retrigger(SandboxVars.EndStation.TriggerModes)
+    EndStation.updateTriggers()
 end
 
 function EndStation.isSandboxChanged()
     local newMode = SandboxVars.EndStation.TriggerModes
-    local curMode = EndStation.currentTriggerMode
-
-    if EndStation.shouldSync then
-        EndStation.saveSandbox()
-        EndStation.shouldSync = false
-    end
-
-    if newMode ~= curMode then
-        EndStation.shouldSync = true
+    if newMode ~= EndStation.currentTriggerMode then
         EndStation.currentTriggerMode = newMode
         getPlayer():addLineChatElement("EndStation: sandbox updated")
         return true
     end
-end
-
-function EndStation.is10MinTrigger()
-    local mode = SandboxVars.EndStation.TriggerModes or 4
-    local TriggerModesTable = { ['1'] = false, ['2'] = true, ['3'] = true, ['4'] = false, ['5'] = false }
-    return TriggerModesTable[tostring(mode)]
 end
 
 function EndStation.IsThirtyMinutesPast()
@@ -102,7 +65,6 @@ end
 
 function EndStation.deviceHandler()
     if EndStation.isSandboxChanged() then
-        EndStation.shouldSync = true
         EndStation.saveSandbox()
     end
 
@@ -135,15 +97,4 @@ function ISServerSandboxOptionsUI:onButtonApply()
     end
 end
 
-
-
---[[_____________________________________________________________________________________________________________________________
-   ░▒▓██████▓▒░    ░▒▓████████▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓██████▓▒░   ░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓███████▓▒░    ░▒▓█▓▒░  ░▒█▒░
-  ░▒▓█▓▒░░▒▓█▓▒░   ░▒▓█▓▒░           ░▒▓█▓▒░         ░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓█▓▒░  ▒▓░    ░▒▓█▓▒░   ░▒▓█▓▒░  ░▒█▒░
-  ░▒▓█▓▒░░▒▓█▓▒░   ░▒▓█▓▒░           ░▒▓█▓▒░         ░▒▓█▓▒░     ░▒▓█▓▒░         ░▒▓█▓▒░ ░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▓▒░  ░▒▓▒░
-  ░▒▓█▓▒▒▓███▓▒░   ░▒▓█▓▒░         ░▒▓██████▓▒░      ░▒▓█▓▒░     ░▒▓█▓▒░         ░▒▓█████████▓▒░     ░▒▓███▓▒░     ░▒▓███████▓▒░
-  ░▒▓█▓▒░          ░▒▓█▓▒░        ░▒▓█▓▒░░▒▓█▓▒░     ░▒▓█▓▒░     ░▒▓█▓▒░         ░▒▓█▓▒░ ░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▒░  ░▒▓█▒░
-  ░▒▓█▓▒░░▒▓█▓▒░   ░▒▓█▓▒░        ░▒▓█▓▒░░▒▓█▓▒░     ░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓█▓▒░  ▒▓░    ░▒▓█▓▒░   ░▒▓█▒░  ░▒▓█▒░
-   ░▒▓█████▓▒░     ░▒▓█▓▒░        ░▒▓█▓▒░░▒▓█▓▒░  ░▒▓███████▓▒░   ░▒▓██████▓▒░   ░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓███████▓▒░    ░▒▓███████▓▒░
-█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████--]]
-
+EndStation.updateTriggers()
