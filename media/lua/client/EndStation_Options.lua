@@ -24,7 +24,7 @@ EndStation.currentTriggerMode = mode
 
 if mode == "1" then
     Events.EveryOneMinute.Add(EndStation.deviceHandler)
-elseif EndStation.is10MinTrigger(mode) then
+elseif EndStation.is10MinTrigger() then
     Events.EveryTenMinutes.Add(EndStation.deviceHandler)
 elseif mode == "4" then
     Events.EveryHours.Add(EndStation.deviceHandler)
@@ -78,7 +78,7 @@ function EndStation.retrigger(mode)
       EndStation.clearTriggers()
     if mode == "1" then
         Events.EveryOneMinute.Add(EndStation.deviceHandler)
-    elseif EndStation.is10MinTrigger(mode) then
+    elseif EndStation.is10MinTrigger() then
         Events.EveryTenMinutes.Add(EndStation.deviceHandler)
     elseif mode == "4" then
         Events.EveryHours.Add(EndStation.deviceHandler)
@@ -98,7 +98,8 @@ function EndStation.clearTriggers()
     Events.EveryDays.Remove(EndStation.deviceHandler)
 end
 
-function EndStation.is10MinTrigger(mode)
+function EndStation.is10MinTrigger()
+    local mode = SandboxVars.EndStation.TriggerModes or 4
     local TriggerModesTable = {
         ['1'] = false,
 
@@ -121,7 +122,7 @@ end
 function EndStation.deviceHandler()
     local bool = true
     local mode = tostring(SandboxVars.EndStation.TriggerModes)
-    if EndStation.is10MinTrigger(mode) and mode  == "3" then
+    if EndStation.is10MinTrigger() and mode  == "3" then
         if not EndStation.IsThirtyMinutesPast() then
             bool = false
         end
@@ -148,16 +149,24 @@ function EndStation.deviceHandler()
 end
 
 -----------------------            ---------------------------
-local hook = ISServerSandboxOptionsUI.onButtonApply
+
 function ISServerSandboxOptionsUI:onButtonApply()
-    EndStation.saveSandbox()
-    EndStation.retrigger(tostring(SandboxVars.EndStation.TriggerModes))
+    --EndStation.retrigger(tostring(SandboxVars.EndStation.TriggerModes))
    	if isAdmin() or  EndStation.dbg then
         print('EndStation: sandbox updated')
+        getPlayer():addLineChatElement(tostring('EndStation: sandbox updated'))
 	end
-    hook(self)
+    EndStation.saveSandbox()
+--[[     self:settingsFromUI(self.options)
+	self.options:sendToServer()
+	self:destroy() ]]
+	return hook(self)
 end
 
+local hook = ISServerSandboxOptionsUI.onButtonApply
+function ISServerSandboxOptionsUI:onButtonApply()
+
+end
 
 --[[_____________________________________________________________________________________________________________________________
    ░▒▓██████▓▒░    ░▒▓████████▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓██████▓▒░   ░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓███████▓▒░    ░▒▓█▓▒░  ░▒█▒░
